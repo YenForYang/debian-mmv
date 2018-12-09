@@ -1,0 +1,12 @@
+Package: mmv-dbgsym
+Source: mmv
+Version: 1.01b-19
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Rhonda D'Vine <rhonda@debian.org>
+Installed-Size: 43
+Depends: mmv (= 1.01b-19)
+Section: debug
+Priority: optional
+Description: debug symbols for mmv
+Build-Ids: 64a7828584b4bb41a5cda5f1331acf1c8a97d4c9

@@ -1,0 +1,6 @@
+49607d62f8b723ecc02910f7f017064f  usr/bin/mmv
+4fc1ac8d6b277cc31f5406074756d4e7  usr/share/doc/mmv/READ.ME
+7087bb7328c099a0eb1f4803835ec507  usr/share/doc/mmv/changelog.Debian.gz
+72e10b8d4d48216f59ada5576a727455  usr/share/doc/mmv/copyright
+3ef8a1d42ef65cfd095864d64d27a83c  usr/share/lintian/overrides/mmv
+cf433f8e4310e994e2ef8b715de01157  usr/share/man/man1/mmv.1.gz

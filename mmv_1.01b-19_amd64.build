@@ -1,0 +1,90 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck
+dpkg-buildpackage: info: source package mmv
+dpkg-buildpackage: info: source version 1.01b-19
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Rhonda D'Vine <rhonda@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh clean
+   dh_auto_clean
+	make -j1 clean
+make[1]: Entering directory '/home/richard/debs/mmv/mmv-1.01b'
+rm -f mmv mmv.o
+make[1]: Leaving directory '/home/richard/debs/mmv/mmv-1.01b'
+   dh_clean
+FAKEROOTKEY=677424854 LD_LIBRARY_PATH=:/opt/intel/lib/intel64_lin:/opt/intel/tbb/lib/intel64/gcc4.7 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh build
+   dh_update_autotools_config
+   dh_auto_configure
+   debian/rules override_dh_auto_build
+make[1]: Entering directory '/home/richard/debs/mmv/mmv-1.01b'
+dh_auto_build -- LDFLAGS="-Wl,-z,relro -Wl,--as-needed,--gc-sections,--relax" CFLAGS="-g -O2 -fdebug-prefix-map=/home/richard/debs/mmv/mmv-1.01b=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe  -DIS_SYSV -DHAS_DIRENT -DHAS_RENAME"
+	make -j1 "LDFLAGS=-Wl,-z,relro -Wl,--as-needed,--gc-sections,--relax" "CFLAGS=-g -O2 -fdebug-prefix-map=/home/richard/debs/mmv/mmv-1.01b=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe  -DIS_SYSV -DHAS_DIRENT -DHAS_RENAME"
+make[2]: Entering directory '/home/richard/debs/mmv/mmv-1.01b'
+icc -g -O2 -fdebug-prefix-map=/home/richard/debs/mmv/mmv-1.01b=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe  -DIS_SYSV -DHAS_DIRENT -DHAS_RENAME -Wdate-time -D_FORTIFY_SOURCE=2  -c -o mmv.o mmv.c
+mmv.c(665): warning #2218: result of call is not used
+  		setuid(uid);
+  		^
+
+mmv.c(666): warning #2218: result of call is not used
+  		setgid(getgid());
+  		^
+
+mmv.c(2739): warning #266: function "utime" declared implicitly
+  				utimes(fullrep, tim)
+  				^
+
+icc -Wl,-z,relro -Wl,--as-needed,--gc-sections,--relax  mmv.o   -o mmv
+icc: warning #10237: -lcilkrts linked in dynamically, static library not available
+make[2]: Leaving directory '/home/richard/debs/mmv/mmv-1.01b'
+make[1]: Leaving directory '/home/richard/debs/mmv/mmv-1.01b'
+   dh_auto_test
+ fakeroot debian/rules binary
+dh binary
+   dh_auto_test
+   dh_testroot
+   dh_prep
+   dh_installdirs
+   dh_auto_install
+	make -j1 install DESTDIR=/home/richard/debs/mmv/mmv-1.01b/debian/mmv AM_UPDATE_INFO_DIR=no
+make[1]: Entering directory '/home/richard/debs/mmv/mmv-1.01b'
+cp mmv /home/richard/debs/mmv/mmv-1.01b/debian/mmv/usr/bin//mmv
+cp mmv.1 /home/richard/debs/mmv/mmv-1.01b/debian/mmv/usr/share/man//man1/mmv.1
+make[1]: Leaving directory '/home/richard/debs/mmv/mmv-1.01b'
+   dh_installdocs
+   dh_installchangelogs
+   dh_installman
+   dh_lintian
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+   dh_fixperms
+   dh_missing
+   dh_strip
+   dh_makeshlibs
+   dh_shlibdeps
+dpkg-shlibdeps: warning: deprecated use of LD_LIBRARY_PATH with private library directory which interferes with cross-building, please use -l option instead
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/mmv/usr/bin/mmv was not linked against libdl.so.2 (it uses none of the library's symbols)
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+dpkg-deb: building package 'mmv' in '../mmv_1.01b-19_amd64.deb'.
+dpkg-deb: building package 'mmv-dbgsym' in '../mmv-dbgsym_1.01b-19_amd64.deb'.
+FAKEROOTKEY=908857861 LD_LIBRARY_PATH=:/opt/intel/lib/intel64_lin:/opt/intel/tbb/lib/intel64/gcc4.7 LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules binary
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../mmv_1.01b-19_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian mmv_1.01b-19_amd64.changes ...
+W: mmv: hardening-no-pie usr/bin/mmv
+N: 0 tags overridden; 1 unused override
+Finished running lintian.
